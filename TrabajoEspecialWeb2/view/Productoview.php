@@ -25,9 +25,10 @@
             $this->smarty->assign('orden',$ordenar);
             $this->smarty->display('templates/orden.tpl');
         }
-        public function precargar($producto){
+        public function precargar($producto,$cat){
             $this->smarty->assign('titulo',"precargar");
             $this->smarty->assign('hola',$producto);
+            $this->smarty->assign('cat',$cat);
             $this->smarty->display('templates/precargar.tpl');   
         }
         public function showProducto($producto){

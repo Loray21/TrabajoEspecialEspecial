@@ -57,7 +57,6 @@
         public function editar($id_producto, $nombre,$precio, $descripcion, $foto){
             $sentencia =  $this->db->prepare("UPDATE producto SET nombre=?,precio=?, descripcion=?, foto=? WHERE id_producto=?");
             $sentencia->execute(array($nombre,$precio ,$descripcion, $foto,$id_producto));
-            var_dump($sentencia);
 
         }
 

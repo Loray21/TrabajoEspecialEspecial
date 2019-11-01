@@ -73,10 +73,10 @@
             
             
             public function precargar($params = null){
-
                 $id = $params[':ID'];
+                $cat = $this->model->get();
                 $producto = $this->model->precargar($id);
-                $this->view->precargar($producto);
+                $this->view->precargar($producto,$cat);
 
 
             }
