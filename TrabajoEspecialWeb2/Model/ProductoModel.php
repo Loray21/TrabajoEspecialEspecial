@@ -9,7 +9,7 @@
         }
         public function GetProducto(){
             // prepara la consulta
-            $sentencia = $this->db->prepare( "select * from producto");
+            $sentencia = $this->db->prepare( "select * from producto");//HACER JOIN ACAA
             // ejecuta la consulta
             $sentencia->execute();
             //if(!$ok){
@@ -22,9 +22,9 @@
         }
 
         public function getp($id){
-            $sentencia=$this->db->prepare('SELECT * FROM producto where id=?');
+            $sentencia=$this->db->prepare('SELECT * FROM producto where id_producto=?');
             $sentencia->execute(array($id));
-            return $sentencia->fetchAll(PDO::FETCH_OBJ);
+            return $sentencia->fetch(PDO::FETCH_OBJ);
 
         }
         public function ordenarporprecio() {
@@ -33,17 +33,32 @@
         $orden=$query->fetchAll(PDO::FETCH_OBJ);
         return $orden;
         }
+        public function obtenerNombreCat($id_producto){
+            $sentencia=$this->db->prepare("SELECT *  FROM categoria  INNER JOIN   producto ON categoria.id_categoria = producto.id_categoria AND producto.id_producto=?");
+            $sentencia->execute();
+            var_dump($sentencia->errorInfo());
+            return $sentencia->fetch(PDO::FETCH_OBJ);
+        }
         public function get() {
             $query = $this->db->prepare('SELECT DISTINCT * FROM categoria');
             $query->execute();
         $categorias=$query->fetchAll(PDO::FETCH_OBJ);
         return $categorias;
         }
-        public function AgregarProducto($id_categoria,$nombre,$precio,$descripcion,$foto ){
-            $sentencia = $this->db->prepare("INSERT INTO producto(id_categoria,nombre,precio,descripcion,foto) VALUES(?,?,?,?,?)");
-            $sentencia->execute(array($id_categoria,$nombre,$precio,$descripcion,$foto));
-        }
+        public function AgregarProducto($id_categoria,$nombre,$precio,$descripcion,$imagen = null ){
+            $filepath = null;
+            if ($imagen)
+                $filepath = $this->moveFile($imagen);
+            $sentencia = $this->db->prepare("INSERT INTO producto(id_categoria,nombre,precio,descripcion, imagen) VALUES(?,?,?,?,?)");
+            $sentencia->execute(array($id_categoria,$nombre,$precio,$descripcion,$filepath));
 
+
+        }
+        private function moveFile($imagen) {
+            $filepath = "img/" . uniqid() . "." . strtolower(pathinfo($imagen['name'], PATHINFO_EXTENSION));  
+            move_uploaded_file($imagen['tmp_name'], $filepath);
+            return $filepath;
+        }
         public function BorrarProducto($id){
             $sentencia = $this->db->prepare("DELETE FROM producto WHERE id_producto=?");
             $sentencia->execute(array($id));
@@ -54,10 +69,9 @@
 
             return $query->fetch(PDO::FETCH_OBJ);
         }
-        public function editar($id_producto, $nombre,$precio, $descripcion, $foto){
-            $sentencia =  $this->db->prepare("UPDATE producto SET nombre=?,precio=?, descripcion=?, foto=? WHERE id_producto=?");
-            $sentencia->execute(array($nombre,$precio ,$descripcion, $foto,$id_producto));
-
+        public function editar($id_producto, $nombre,$precio, $descripcion,$id_categoria, $imagen){
+            $sentencia =  $this->db->prepare("UPDATE producto SET nombre=?,precio=?, descripcion=?,id_categoria=?, imagen=? WHERE id_producto=?");
+            $sentencia->execute(array($nombre,$precio ,$descripcion,$id_categoria, $imagen,$id_producto));
         }
 
     }

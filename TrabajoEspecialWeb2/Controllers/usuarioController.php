@@ -30,7 +30,8 @@ class LoginController {
             $this->authHelper->login($user);
             header('Location: home');
         } else {
-         
+            echo $password;
+            var_dump($user);
             $this->view->showLogin("Login incorrecto");
         }
     }

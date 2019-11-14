@@ -8,7 +8,7 @@ class CategoriaController {
 
     private $model;
     private $view;
-    private $authHelper;
+   private $authHelper;
     
 	function __construct(){
 
@@ -23,63 +23,64 @@ class CategoriaController {
     
     }
     public function AgregarCategoria(){
-        $categoria = $this->model->GetCategoria();
-        $nombre = $_POST['nombre'];
-        $descripcion = $_POST['descripcion'];
-        $foto = $_POST['foto'];
-        $agregar;
-        foreach ($categoria as $value){
-            if($value->nombre==$nombre){
-                 $agregar=true;
+               // barrera para usuario logueado
+               $this->authHelper->checkLoggedIn();
 
-             }else{
-                 $agregar=false;
-            }
-        }
-        if(!$agregar){
-                    $this->model->AgregarCategoria($_POST['nombre'],$_POST['descripcion'],$_POST['foto']);
-                    header("Location: " .BASE_URL."categorias");
-         }else{
-                 $this->view->displayError("ya existe una categoria con ese nombre ");
-    }
+        $this->model->AgregarCategoria($_POST['nombre'],$_POST['descripcion'],$_POST['foto']);
+        header("Location: " .BASE_URL."categorias");
+
     }
     public function editarcat($params = null) {
+               // barrera para usuario logueado
+               $this->authHelper->checkLoggedIn();
+
         $id_cat =$params[':ID'];
         $nombre = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
         $foto = $_POST['foto'];
         if (!empty($nombre)) {
-             $this->model->editarcat($id_cat,$nombre,$descripcion,$foto);
-                header("Location: " . BASE_URL."categorias");
+            $this->model->editarcat($id_cat,$nombre,$descripcion,$foto);
+            header("Location: " . BASE_URL."categorias");
+
         } else {
             $this->view->displayError("debe completar los campos de categoria,nombre y precio OBLIGATORIOS");
         }
     }
     
     public function precargarcat($params = null){
+               // barrera para usuario logueado
+               $this->authHelper->checkLoggedIn();
         $id = $params[':ID'];
         $categoria = $this->model->precargarcat($id);
         $this->view->precargarcat($categoria);
-    }
 
+
+    }
     public function getProducto($params = null) {
         $id = $params[':ID'];
         $Categoria = $this->model->get($id);
 
-        if ($Categoria) // si existe la cat
+        if ($Categoria) // si existe la tarea
             $this->view->showCategoria($Categoria);
         else
-            $this->view->displayError("no existen productos con esa categoria ");
+        $this->view->displayError("no existen productos con esa categoria ");
+
     }
+
     public function borrarCat($params = null){
+               // barrera para usuario logueado
+               $this->authHelper->checkLoggedIn();
         $id=$params[':ID'];
         $producto = $this->model->get($id);
         if (!$producto){
            $this->model->borrarCat($id);
-             header("Location: " .BASE_URL."categorias");
-            }else{
-                $this->view->displayError("no puede borrar esta categoria porque existen productos asociados ");
+         header("Location: " .BASE_URL."categorias");
+        }else{
+            $this->view->displayError("no puede borrar esta categoria porque existen productos asociados ");
 
         }
+
+
     }
+
 }

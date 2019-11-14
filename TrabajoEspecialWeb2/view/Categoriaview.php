@@ -34,8 +34,6 @@ public function display($Categoria){
         $this->smarty->display('templates/productoporcat.tpl');
     }
     public function displayError($msgError) {
-        $this->smarty->assign('titulo',"error");
-
         echo "<h1>ERROR!</h1>";
         echo "<h2>{$msgError}</h2>";
     }

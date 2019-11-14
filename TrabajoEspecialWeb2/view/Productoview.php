@@ -14,26 +14,24 @@
 
         }
 
-        public function DisplayProductos($Producto,$cat){
+        public function DisplayProductos($Producto,$cat,$categoria){
             $this->smarty->assign('lista_Productos',$Producto);
             $this->smarty->assign('cat',$cat);
+            $this->smarty->assign('nombrecat',$categoria);
+
             $this->smarty->display('templates/index.tpl');
         }
         
         public function ordenar($ordenar){
-            $this->smarty->assign('titulo',"ordenar");
             $this->smarty->assign('orden',$ordenar);
             $this->smarty->display('templates/orden.tpl');
         }
-        public function precargar($producto,$cat){
-            $this->smarty->assign('titulo',"precargar");
+        public function precargar($producto,$categorias){
             $this->smarty->assign('hola',$producto);
-            $this->smarty->assign('cat',$cat);
+            $this->smarty->assign('categorias',$categorias);
             $this->smarty->display('templates/precargar.tpl');   
         }
         public function showProducto($producto){
-            $this->smarty->assign('titulo',"producto");
-
             $this->smarty->assign('productos',$producto);
             $this->smarty->display('templates/detallep.tpl');   
         }

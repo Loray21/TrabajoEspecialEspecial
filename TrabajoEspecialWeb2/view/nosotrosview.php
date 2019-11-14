@@ -15,8 +15,6 @@ class  Nosotrosview{
     }
 
     public function nosotros(){
-      $this->smarty->assign('titulo',"nosotros");
-
         $this->smarty->display('templates/nosotros.tpl');
       }
 }

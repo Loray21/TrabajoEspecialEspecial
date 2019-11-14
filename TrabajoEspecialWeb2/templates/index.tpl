@@ -23,7 +23,6 @@
           <a href="#" class="list-group-item">Category 2</a>
           <a href="#" class="list-group-item">Category 3</a>
         </div>
-
       </div>
       <!-- /.col-lg-3 -->
 
@@ -31,7 +30,7 @@
 {foreach from=$lista_Productos item=p}
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="{$p->foto}" alt=""></a>
+              <a href="#"><img class="card-img-top" src="{$p->imagen}" alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
                   <a href="producto/{$p->id_producto}">{$p->nombre} </a> 
@@ -39,9 +38,9 @@
 - <a href='borrar/{$p->id_producto}'>Borrar</a></td><td>
 <a href='precargar/{$p->id_producto}'>editar</a></td></tr>
 {/if}
-
                 </h4>
                 <h5>{$p->precio}</h5>
+               <h5>{$nombrecat->nombre}</h5>
                 <p class="card-text"{$p->descripcion}</p>
               </div>
               <div class="card-footer">
@@ -49,16 +48,15 @@
               </div>
             </div>
           </div>
-            {/foreach}
+          {/foreach}
 
-                 </div>
-
-                 </div>
-                                  </div>
+        </div>
+</div>
+</div>
 
 {if isset($userName)}
 
-<form action="agregar"  method="POST">  
+<form action="agregar"  method="POST" enctype="multipart/form-data">  
 <div class="container">
 <select name=id_categoria>
 {foreach from=$cat item=p}
@@ -69,9 +67,8 @@
         <input class="form-control" type="text"  name="nombre" placeholder="nombre">
         <input class="form-control" type="number"  name="precio" placeholder="precio">
         <input class="form-control" type="text"   name="descripcion" placeholder="Descripcion">
-        <input class="form-control" type="text"   name="foto" placeholder="foto">
-
-        <input type="submit"  value=agregar;  class="btn btn-primary mr-2"Agregar>
+        <input class="form-control" type="file"   name="imagen" placeholder="foto">
+        <input type="submit"  value=agregar; class="btn btn-primary mr-2"Agregar>
 
 </form>
         {/if}
@@ -83,7 +80,6 @@
     </div>
     <!-- /.container -->
   </footer>
-
 
 </body>
 

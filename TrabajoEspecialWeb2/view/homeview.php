@@ -14,7 +14,6 @@ class homeview {
 
     }
     public function home(){
-      $this->smarty->assign('titulo',"home");
         $this->smarty->assign('BASE_URL',BASE_URL);
         $this->smarty->display('templates/home.tpl');
       }

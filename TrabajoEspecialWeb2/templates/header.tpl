@@ -14,13 +14,14 @@
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
   <!-- Custom styles for this template -->
   <link href="css/shop-homepage.css" rel="stylesheet">
 
 </head>
 
 <body>
+
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
@@ -46,7 +47,7 @@
           </li>
            {if isset($userName)}
          <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link" href="logout">cerrar sesion</a>
+            <a class="nav-item nav-link" href="logout">LOGOUT</a>
         </div>
                 {/if}
                          {if !isset($userName)}
