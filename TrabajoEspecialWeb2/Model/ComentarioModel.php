@@ -1,7 +1,7 @@
 <?php
 
 
-class ComentarioModel{
+class ComentariosModel{
 
     private $db;
 
@@ -21,5 +21,17 @@ class ComentarioModel{
 
 
     }
+    public function getComentario($id){
+        $sentencia=$this->db->prepare('SELECT * FROM comentarios where id_comentario=?');
+        $sentencia->execute(array($id));
+        return $sentencia->fetch(PDO::FETCH_OBJ);
+
+    }
+    public function borrarComentario($id){
+        $sentencia=$this->db->prepare("DELETE FROM comentarios where id_comentario=?");
+        $sentencia->execute(array($id));
+ 
+    }
+    
 }
 

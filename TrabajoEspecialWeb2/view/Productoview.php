@@ -14,13 +14,13 @@
 
         }
 
-        public function DisplayProductos($Producto,$cat,$categoria){
+        public function DisplayProductos($Producto,$cat){
             $this->smarty->assign('lista_Productos',$Producto);
             $this->smarty->assign('cat',$cat);
-            $this->smarty->assign('nombrecat',$categoria);
-
             $this->smarty->display('templates/index.tpl');
         }
+
+    
         
         public function ordenar($ordenar){
             $this->smarty->assign('orden',$ordenar);

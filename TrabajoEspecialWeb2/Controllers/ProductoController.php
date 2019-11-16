@@ -38,17 +38,13 @@
             public function GetP(){
                 $Producto = $this->model->GetProducto();
                 $cat = $this->model->get();
-                $categoria=$this->model->obtenerNombreCat();
-                $this->view->DisplayProductos($Producto,$cat,$categoria);
-
-
+                $this->view->DisplayProductos($Producto,$cat);
             }
+           
             public function getProducto($params = null) {
                 $id = $params[':ID'];
                 $producto = $this->model->getp($id);
-
-                 $this->view->showProducto($producto);
-              
+                $this->view->showProducto($producto);
             }
             public function ordenar(){
                 $ordenar = $this->model->ordenarporprecio();

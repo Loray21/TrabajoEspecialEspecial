@@ -40,7 +40,7 @@
 {/if}
                 </h4>
                 <h5>{$p->precio}</h5>
-               <h5>{$nombrecat->nombre}</h5>
+               <h5>{$p->categoria}</h5>
                 <p class="card-text"{$p->descripcion}</p>
               </div>
               <div class="card-footer">
@@ -80,7 +80,6 @@
     </div>
     <!-- /.container -->
   </footer>
-
 </body>
 
 </html>

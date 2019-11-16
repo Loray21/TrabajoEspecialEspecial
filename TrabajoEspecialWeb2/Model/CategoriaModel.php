@@ -31,6 +31,8 @@ class CategoriaModel {
 /**
      * Retorna una tarea según el id pasado.
      */
+    //booleano para el usuario
+
     public function get($id) {
         $query = $this->db->prepare('SELECT * FROM producto WHERE id_categoria = ?');
         $query->execute(array($id));

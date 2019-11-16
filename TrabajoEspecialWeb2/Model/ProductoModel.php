@@ -7,7 +7,7 @@
         function __construct(){
             $this->db = new PDO('mysql:host=localhost;'.'dbname=supermecado;charset=utf8', 'root', '');
         }
-        public function GetProducto(){
+        public function Geth(){
             // prepara la consulta
             $sentencia = $this->db->prepare( "select * from producto");//HACER JOIN ACAA
             // ejecuta la consulta
@@ -33,11 +33,11 @@
         $orden=$query->fetchAll(PDO::FETCH_OBJ);
         return $orden;
         }
-        public function obtenerNombreCat($id_producto){
-            $sentencia=$this->db->prepare("SELECT *  FROM categoria  INNER JOIN   producto ON categoria.id_categoria = producto.id_categoria AND producto.id_producto=?");
+        public function GetProducto(){
+            $sentencia=$this->db->prepare("SELECT p.*, c.nombre as categoria FROM producto p JOIN categoria c ON c.id_categoria = p.id_categoria");
             $sentencia->execute();
             var_dump($sentencia->errorInfo());
-            return $sentencia->fetch(PDO::FETCH_OBJ);
+            return $sentencia->fetchAll(PDO::FETCH_OBJ);
         }
         public function get() {
             $query = $this->db->prepare('SELECT DISTINCT * FROM categoria');

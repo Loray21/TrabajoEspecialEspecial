@@ -1,5 +1,4 @@
 <?php
-
 abstract class ApiController {
     protected $model;
     protected $view;
@@ -10,7 +9,7 @@ abstract class ApiController {
         //Lee todo el archivo en una cadena
         $this->data = file_get_contents("php://input"); 
         //
-        $this->model = new ProductoModel();
+        $this->model= new  ComentariosModel();
     }
 
     //decodifica una cadena json(json_decode)
@@ -19,4 +18,3 @@ abstract class ApiController {
     }  
 }
 
-?>
