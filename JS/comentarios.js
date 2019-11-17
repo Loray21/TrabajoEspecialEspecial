@@ -4,12 +4,12 @@
 document.querySelector("#form-comentario").addEventListener('submit', addTask);
 
 // define la app Vue
+//inicia vue;
 let app = new Vue({
     el: "#template-vue-Comentarios",
     data: {
         subtitle: "Comentarios",
         comentarios: [], 
-        auth: true
     }
 });
 
@@ -17,10 +17,11 @@ let app = new Vue({
  * Obtiene la lista de tareas de la API y las renderiza con Vue.
  */
 function getTasks() {
-    fetch("api/comentarios")
+    fetch("/api/comentarios")
+    console.log(fetch);
     .then(response => response.json())
-    .then(tasks => {
-        app.tasks = tasks; // similar a $this->smarty->assign("tasks", $tasks)
+    .then(comentarios => {
+        app.comentarios = comentarios; // similar a $this->smarty->assign("tasks", $tasks)
     })
     .catch(error => console.log(error));
 }
@@ -32,12 +33,13 @@ function addTask(e) {
     e.preventDefault();
     
     let data = {
-        titulo:  document.querySelector("input[name=usuario]").value,
-        descripcion:  document.querySelector("input[name=comentario]").value,
+        usuario:  document.querySelector("input[name=usuario]").value,
+        comentario:  document.querySelector("input[name=comentario]").value,
+        id:  document.querySelector("input[name=id_producto]").value,
 
     }
 
-    fetch('api/comentarios', {
+    fetch('/api/comentarios', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},       
         body: JSON.stringify(data) 

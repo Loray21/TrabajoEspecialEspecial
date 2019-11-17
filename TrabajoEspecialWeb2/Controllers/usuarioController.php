@@ -40,4 +40,25 @@ class LoginController {
         $this->authHelper->logout();
         header('Location: ' . home);
     }
+
+    public function registrarse(){
+
+       $this->view->registrarse();
+       header('Location: registrarse');
+
+
+
+
+
+    }
+    public function registrar(){
+
+        $usuario=$_POST['username'];
+        $password=$_POST['password'];
+        $hash = password_hash("$password", PASSWORD_DEFAULT);
+        $this->model->registrarse($usuario,$hash);
+
+
+ 
+}
 }

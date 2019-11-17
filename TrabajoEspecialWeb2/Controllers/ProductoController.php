@@ -60,11 +60,10 @@
                 $id_producto = $_POST['id_producto'];
                 $usuario = $_POST['usuario'];
                 $comentario = $_POST['comentario'];
-                var_dump($usuario);
-                var_dump($comentario);
+             
 
                 $this->modelcomentarios->AgregarComentario($usuario,$comentario,$id_producto);
-                //header("Location: " . BASE_URL . "getComentariosCSR");
+            header("Location: " . BASE_URL . "getComentariosCSR");
 
 
             }
@@ -76,7 +75,6 @@
                 $nombre = $_POST['nombre'];
                 $precio = $_POST['precio'];
                 $descripcion = $_POST['descripcion'];
-                header("Location: " . BASE_URL . "producto");
 
 
 // agarra el file

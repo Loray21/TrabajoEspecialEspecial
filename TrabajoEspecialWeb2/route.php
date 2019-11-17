@@ -36,6 +36,8 @@ require_once('Router.php');
     $r->addRoute("precargarcat/:ID", "GET", "CategoriaController", "precargarcat");
     $r->addRoute("editarcat/:ID", "POST", "CategoriaController", "editarcat");
     $r->addRoute("getComentariosCSR", "GET", "ProductoController", "GETcomentarios");
+    $r->addRoute("registrarse", "GET", "LoginController", "registrarse");
+    $r->addRoute("nuevoregistro", "POST", "LoginController", "registrar");
 
 
 

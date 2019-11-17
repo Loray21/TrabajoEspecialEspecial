@@ -11,7 +11,7 @@ class ComentariosModel{
     }
 
     public function getComentarios(){
-        $sentencia=$this->db->prepare("SELECT * from comentarios");
+        $sentencia=$this->db->prepare("SELECT p.*, c.nombre FROM comentarios p JOIN producto c ON c.id_producto = p.id_producto");
         $sentencia->execute();
 
         $Comentario=$sentencia->fetchAll(PDO::FETCH_OBJ);

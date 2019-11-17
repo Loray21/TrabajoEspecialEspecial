@@ -1,10 +1,8 @@
 {include file="header.tpl"}
-
 <div class="dropdown show">
   <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Categorias
   </a>
-
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               {foreach from=$lista_categoria item=p}
 
@@ -18,7 +16,8 @@
              {/foreach}
 
   </div>
-</div>
+ </div>
+
 
               {if isset($userName)}
             
@@ -28,9 +27,9 @@
         <input class="form-control" type="text"  name="foto" placeholder="ponga la url de la imagen">
         <input class="form-control" type="text"   name="descripcion" placeholder="Descripcion">
         <input type="submit"  value=Agregar  class="btn btn-primary mr-2">
+  </div>
 </form>
 
-    </div>
  {/if}
 
              <!-- Footer -->
