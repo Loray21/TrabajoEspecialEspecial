@@ -35,6 +35,12 @@
             $this->smarty->assign('productos',$producto);
             $this->smarty->display('templates/detallep.tpl');   
         }
+        public function DisplayComentariosCSR(){
+            $this->smarty->assign('titulo',"Lista de comentarios CSR");
+            $this->smarty->display('templates/vercomentarios.tpl');   
+
+
+        }
         public function showError($msgError) {
             echo "<h1>ERROR!</h1>";
             echo "<h2>{$msgError}</h2>";

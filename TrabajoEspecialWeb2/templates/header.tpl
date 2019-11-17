@@ -12,6 +12,8 @@
 
   <title>Supermecado Marano</title>
 
+  <!-- development version, includes helpful console warnings -->
+                <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -59,6 +61,8 @@
       </div>
     </div>
   </nav>
+                      <a href="getComentariosCSR">Tareas CSR</a>
+
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

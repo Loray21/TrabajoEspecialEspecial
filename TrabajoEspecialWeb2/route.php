@@ -22,6 +22,7 @@ require_once('Router.php');
     $r->addRoute("editarProducto/:ID", "POST", "ProductoController", "editarProducto");
     $r->addRoute("Agregar", "POST", "ProductoController", "AgregarProducto");
     $r->addRoute("AgregarCategoria", "POST", "CategoriaController", "AgregarCategoria");
+    $r->addRoute("insertar", "POST", "ProductoController", "AgregarComentario");
     $r->addRoute("categorias", "GET", "CategoriaController", "GetCategoria");
     $r->addRoute("agregar", "POST", "ProductoController", "AgregarProducto");
     $r->addRoute("inicio", "GET", "ProductoController", "home");
@@ -34,6 +35,7 @@ require_once('Router.php');
     $r->addRoute("producto/:ID", "GET", "ProductoController", "getProducto");
     $r->addRoute("precargarcat/:ID", "GET", "CategoriaController", "precargarcat");
     $r->addRoute("editarcat/:ID", "POST", "CategoriaController", "editarcat");
+    $r->addRoute("getComentariosCSR", "GET", "ProductoController", "GETcomentarios");
 
 
 

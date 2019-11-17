@@ -1,5 +1,6 @@
         <?php
         require_once ".\Model\ProductoModel.php";
+        require_once ".\Model\ComentarioModel.php";
         require_once "view\Productoview.php";
         require_once "view\homeview.php";
         require_once "view\Nosotrosview.php";
@@ -9,6 +10,7 @@
         class ProductoController {
 
             private $model;
+            private $modelcomentarios;
             private $view;
             private $view1;
             private $view2;
@@ -22,6 +24,7 @@
                 $this->view1 = new  homeview();
                 $this->view2 = new  nosotrosview();
                 $this->authHelper = new AuthHelper();
+                $this->modelcomentarios= new ComentariosModel();
 
             }
 
@@ -51,6 +54,20 @@
                 $this->view->ordenar($ordenar);
                 
             }
+
+            public function AgregarComentario(){
+                $this->authHelper->checkLoggedIn();
+                $id_producto = $_POST['id_producto'];
+                $usuario = $_POST['usuario'];
+                $comentario = $_POST['comentario'];
+                var_dump($usuario);
+                var_dump($comentario);
+
+                $this->modelcomentarios->AgregarComentario($usuario,$comentario,$id_producto);
+                //header("Location: " . BASE_URL . "getComentariosCSR");
+
+
+            }
             public function AgregarProducto() {
                        // barrera para usuario logueado
                        $this->authHelper->checkLoggedIn();
@@ -59,6 +76,7 @@
                 $nombre = $_POST['nombre'];
                 $precio = $_POST['precio'];
                 $descripcion = $_POST['descripcion'];
+                header("Location: " . BASE_URL . "producto");
 
 
 // agarra el file
@@ -123,4 +141,11 @@ if ($_FILES['imagen']['name']) {
                 $this->model->BorrarProducto($id);
                 header("Location: " . BASE_URL."producto");
             }
-        }
+
+            public function GETcomentarios(){
+                $this->authHelper->checkLoggedIn();
+                $this->view->DisplayComentariosCSR();
+        
+            }
+            }
+        

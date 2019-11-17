@@ -32,6 +32,15 @@ class ComentariosModel{
         $sentencia->execute(array($id));
  
     }
+    public function AgregarComentario($usuario,$comentario,$id_producto){
+        $sentencia = $this->db->prepare("INSERT INTO comentarios(usuario,comentario,id_producto) VALUES(?,?,?)");
+        $sentencia->execute(array($usuario,$comentario,$id_producto));
+        var_dump($sentencia->errorInfo());
+
+
+    }
+
+    
     
 }
 
