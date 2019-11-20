@@ -6,7 +6,7 @@
     <ul>
        <li v-for="coment in comentarios">
 
-        { coment.usuario }} - {coment.comentarios}
+        {{ coment.usuario }} - {{coment.comentario}}
 
            </span>
        </li> 

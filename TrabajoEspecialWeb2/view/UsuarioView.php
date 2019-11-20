@@ -15,8 +15,8 @@ class LoginView {
         $this->smarty->assign('error', $error);
         $this->smarty->display('templates/usuario.tpl');
     }
-    public function registrarse($error = null) {
-        $this->smarty->assign('titulo', 'Iniciar Sesión');
+    public function registrarse() {
+        $this->smarty->assign('titulo', 'Registrarse');
         $this->smarty->display('templates/registrarse.tpl');
     }
 

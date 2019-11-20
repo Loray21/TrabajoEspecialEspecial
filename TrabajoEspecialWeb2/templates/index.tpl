@@ -1,7 +1,7 @@
 {include 'templates/header.tpl'}
 
   <!-- Page Content -->
-  <div class="container-fluid">c
+  <div class="container-fluid">
   <div class="dropdown show">
   <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Ordenar por
@@ -30,7 +30,7 @@
 {foreach from=$lista_Productos item=p}
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="{$p->imagen}" alt=""></a>
+              <a href="producto/{$p->id_producto}"><img class="card-img-top" src="{$p->imagen}" alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
                   <a href="producto/{$p->id_producto}">{$p->nombre} </a> 
@@ -39,7 +39,7 @@
 <a href='precargar/{$p->id_producto}'>editar</a></td></tr>
 {/if}
                 </h4>
-                <h5>{$p->precio}</h5>
+                <h5><span>$</span>{$p->precio}</h5>
                <h5>{$p->categoria}</h5>
                 <p class="card-text"{$p->descripcion}</p>
               </div>

@@ -13,10 +13,8 @@
             <input type="password" name="password" class="form-control" placeholder="Password">
         </div>
 
-        {if $error}
         <div class="alert alert-danger" role="alert">
         </div>
-        {/if}
 
         <button type="submit" class="btn btn-primary">registrarse</button>
     </form>

@@ -30,8 +30,6 @@ class LoginController {
             $this->authHelper->login($user);
             header('Location: home');
         } else {
-            echo $password;
-            var_dump($user);
             $this->view->showLogin("Login incorrecto");
         }
     }
@@ -45,11 +43,6 @@ class LoginController {
 
        $this->view->registrarse();
        header('Location: registrarse');
-
-
-
-
-
     }
     public function registrar(){
 
@@ -57,8 +50,7 @@ class LoginController {
         $password=$_POST['password'];
         $hash = password_hash("$password", PASSWORD_DEFAULT);
         $this->model->registrarse($usuario,$hash);
+        header('Location: producto');
 
-
- 
-}
+        }
 }

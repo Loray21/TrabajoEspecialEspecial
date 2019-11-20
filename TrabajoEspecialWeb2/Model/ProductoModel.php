@@ -51,8 +51,6 @@
                 $filepath = $this->moveFile($imagen);
             $sentencia = $this->db->prepare("INSERT INTO producto(id_categoria,nombre,precio,descripcion, imagen) VALUES(?,?,?,?,?)");
             $sentencia->execute(array($id_categoria,$nombre,$precio,$descripcion,$filepath));
-
-
         }
         private function moveFile($imagen) {
             $filepath = "img/" . uniqid() . "." . strtolower(pathinfo($imagen['name'], PATHINFO_EXTENSION));  

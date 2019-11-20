@@ -11,17 +11,20 @@
         <div class="form-group">
             <label>Password</label>
             <input type="password" name="password" class="form-control" placeholder="Password">
+            <a href="registrarse">no tienes cuenta? registrate</a>
+
         </div>
 
         {if $error}
         <div class="alert alert-danger" role="alert">
             {$error}
+
         </div>
         {/if}
 
         <button type="submit" class="btn btn-primary">Ingresar</button>
-    </form>
 
+    </form>
 </div>
           <!-- Footer -->
   <footer class="py-5 bg-dark">
