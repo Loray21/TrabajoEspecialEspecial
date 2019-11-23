@@ -11,10 +11,25 @@ class UserModel {
     /**
      * Retorna un usuario según el username pasado.
      */
+
+     public function getUsuarios(){
+        $query = $this->db->prepare('SELECT * FROM usuarios');
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_OBJ);
+
+
+     }
+
+     public function getusuario($id){
+        $query = $this->db->prepare('SELECT * FROM usuarios WHERE id = ?');
+        $query->execute(array($id));
+
+         return $query->fetch(PDO::FETCH_OBJ);
+     }
+
     public function getByUsername($username) {
         $query = $this->db->prepare('SELECT * FROM usuarios WHERE username = ?');
        $query->execute(array($username));
-
         return $query->fetch(PDO::FETCH_OBJ);
     }
     public function registrarse($username,$password){
@@ -22,6 +37,14 @@ class UserModel {
         $sentencia->execute(array($username,$password));
 
 
+    }
+    public function AsignarAdmin($id){
+        $sentencia =  $this->db->prepare("UPDATE usuarios SET  admin=1 WHERE id=?");
+        $sentencia->execute(array($id));
+    }
+    public function eliminaradmin($id){
+        $sentencia =  $this->db->prepare("UPDATE usuarios SET  admin=0 WHERE id=?");
+        $sentencia->execute(array($id));
     }
 
 }

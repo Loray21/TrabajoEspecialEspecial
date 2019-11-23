@@ -22,9 +22,9 @@ class ComentariosModel{
 
     }
     public function getComentario($id){
-        $sentencia=$this->db->prepare('SELECT * FROM comentarios where id_comentario=?');
+        $sentencia=$this->db->prepare('SELECT * FROM comentarios where id_producto=?');
         $sentencia->execute(array($id));
-        return $sentencia->fetch(PDO::FETCH_OBJ);
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
 
     }
     public function borrarComentario($id){
@@ -32,9 +32,9 @@ class ComentariosModel{
         $sentencia->execute(array($id));
  
     }
-    public function AgregarComentario($usuario,$comentario,$id_producto){
-        $sentencia = $this->db->prepare("INSERT INTO comentarios(usuario,comentario,id_producto) VALUES(?,?,?)");
-        $sentencia->execute(array($usuario,$comentario,$id_producto));
+    public function AgregarComentario($usuario,$comentario,$id_producto,$puntaje){
+        $sentencia = $this->db->prepare("INSERT INTO comentarios(usuario,comentario,id_producto,puntaje) VALUES(?,?,?,?)");
+        $sentencia->execute(array($usuario,$comentario,$id_producto,$puntaje));
         var_dump($sentencia->errorInfo());
 
 

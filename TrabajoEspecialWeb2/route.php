@@ -40,6 +40,10 @@ require_once('Router.php');
     $r->addRoute("getComentariosCSR", "GET", "ProductoController", "GETcomentarios");
     $r->addRoute("registrarse", "GET", "LoginController", "registrarse");
     $r->addRoute("nuevoregistro", "POST", "LoginController", "registrar");
+    $r->addRoute("admin", "GET", "LoginController", "getUsuarios");
+    $r->addRoute("AsignarAdmin/:ID", "GET", "LoginController", "AsignarAdmin");
+    $r->addRoute("QuitarAdmin/:ID", "GET", "LoginController", "QuitarAdmin");
+
 
 
 

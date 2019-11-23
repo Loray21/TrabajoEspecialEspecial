@@ -60,10 +60,9 @@
                 $id_producto = $_POST['id_producto'];
                 $usuario = $_POST['usuario'];
                 $comentario = $_POST['comentario'];
-             
+                $puntaje = $_POST['puntaje'];
 
-                $this->modelcomentarios->AgregarComentario($usuario,$comentario,$id_producto);
-            header("Location: " . BASE_URL . "getComentariosCSR");
+                $this->modelcomentarios->AgregarComentario($usuario,$comentario,$id_producto,$puntaje);
 
 
             }
@@ -141,7 +140,6 @@ if ($_FILES['imagen']['name']) {
             }
 
             public function GETcomentarios(){
-                $this->authHelper->checkLoggedIn();
                 $this->view->DisplayComentariosCSR();
         
             }

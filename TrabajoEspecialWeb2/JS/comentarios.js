@@ -3,6 +3,7 @@
 // event listeners
 document.querySelector("#form-comentario").addEventListener('submit', AgregarComentario);
 
+
 // define la app Vue
 //inicia vue;
 let app = new Vue({
@@ -17,12 +18,15 @@ let app = new Vue({
  * Obtiene la lista de tareas de la API y las renderiza con Vue.
  */
 function getComentarios() {
-    fetch("api/comentarios")
-
+    let p=document.getElementById("producto");
+    let id=p.dataset.producto;
+    fetch('api/producto/comentarios '+"/"+id)
     .then(response => response.json())
     .then(comentarios => {
         app.comentarios = comentarios; // similar a $this->smarty->assign("tasks", $tasks)
+        
     })
+       
     .catch(error => console.log(error));
 }
 
@@ -39,7 +43,7 @@ function AgregarComentario() {
     }
     console.log(data);
 
-    fetch('api/comentarios', {
+    fetch('api/producto/comentarios', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},       
         body: JSON.stringify(data) 
@@ -50,5 +54,19 @@ function AgregarComentario() {
      .catch(error => console.log(error));
 }
 
-// obtiene las tareas al iniciio
+
+async function borrar(id){ 
+    try{
+        let r = await fetch('api/producto/comentario'+"/"+id,{
+            "method": "DELETE"
+        });
+        let json = await r.json();
+        console.log(json);
+    
+        }catch(e){
+            console.log(e);
+        } 
+}
 getComentarios();
+
+// obtiene las tareas al iniciio

@@ -2,7 +2,7 @@
 
 
        
-        <div class="row">
+        <div class="row" >
 {foreach from=$Categoria item=p}
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">

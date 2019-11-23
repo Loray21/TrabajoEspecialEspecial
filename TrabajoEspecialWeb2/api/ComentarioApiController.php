@@ -21,8 +21,12 @@ class ComentarioApiController extends ApiController{
         public function GetComentarios($params=null){
             $comentario = $this->model->getComentarios();
             $this->view->response($comentario, 200);
+        }
 
-
+        public function getcomentario($params=[]){
+            $id=$params[':ID'];
+            $comentario = $this->model->GetComentario($id);
+            $this->view->response($comentario, 200);
 
         }
         public function BorrarComentario($params = []) {

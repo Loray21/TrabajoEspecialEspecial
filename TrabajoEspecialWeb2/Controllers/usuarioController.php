@@ -40,17 +40,41 @@ class LoginController {
     }
 
     public function registrarse(){
-
        $this->view->registrarse();
-       header('Location: registrarse');
     }
-    public function registrar(){
 
+    public function getUsuarios(){
+       if($this->authHelper->isAdmin()){
+        $usuarios=$this->model->getUsuarios();
+        $this->view->showUsuarios($usuarios);
+       }else{
+        header('Location: home');
+
+       }
+       }
+
+    public function AsignarAdmin($params = null){
+
+        $id = $params[':ID'];
+        $this->model->AsignarAdmin($id);
+        header('Location'.BASE_URL.'admin');
+
+     }
+     
+    public function QuitarAdmin($params = null){
+        $id = $params[':ID'];
+        $this->model->eliminaradmin($id);
+        header('Location'.BASE_URL.'admin');
+
+     }
+    
+    public function registrar(){
         $usuario=$_POST['username'];
         $password=$_POST['password'];
         $hash = password_hash("$password", PASSWORD_DEFAULT);
         $this->model->registrarse($usuario,$hash);
-        header('Location: producto');
+        header('Location'.BASE_URL.'producto');
+
 
         }
 }

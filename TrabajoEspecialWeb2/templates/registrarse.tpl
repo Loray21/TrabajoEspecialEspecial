@@ -13,9 +13,6 @@
             <input type="password" name="password" class="form-control" placeholder="Password">
         </div>
 
-        <div class="alert alert-danger" role="alert">
-        </div>
-
         <button type="submit" class="btn btn-primary">registrarse</button>
     </form>
 
