@@ -23,16 +23,15 @@
   </div>
                                       
 </div>
-{include file="vue/Comentarios.tpl"}
-
+{include file="templates/Vue/Comentarios.tpl"}
             
-
             <form id="form-comentario" action="insertar" method="post">
-                    {if isset($userName)}
+                {if  (isset($isAdmin))&&($isAdmin)}
 
+                      <input type="hidden" name=id_producto value="{$productos->id_producto}" >
+                       
                 <input type="text" name="usuario" placeholder="usuario">
                 <input type="text" name="comentario" placeholder="comentario">
-                <input type="text" name="id_producto" placeholder="id">
                 <select name="puntaje">
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -43,10 +42,9 @@
                   </select>
 
 
-                <input type="submit" value="Insertar">
+                <input type="submit" value="agregar">
             </form>
             {/if}
 
         <script src="js/comentarios.js"></script>
-    </body>
-</html>
+             {include file="templates/footer.tpl"}

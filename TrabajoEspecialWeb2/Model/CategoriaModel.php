@@ -21,10 +21,9 @@ class CategoriaModel {
 
         return $query->fetch(PDO::FETCH_OBJ);
     }
-    public function editarcat($id_categoria, $nombre,$descripcion,$foto){
-        $sentencia =  $this->db->prepare("UPDATE  categoria SET nombre=?,descripcion=?, foto=? WHERE id_categoria=?");
-        $sentencia->execute(array($nombre,$descripcion, $foto,$id_categoria));
-        var_dump($sentencia);
+    public function editarcat($id_categoria, $nombre,$descripcion){
+        $sentencia =  $this->db->prepare("UPDATE  categoria SET nombre=?,descripcion=? WHERE id_categoria=?");
+        $sentencia->execute(array($nombre,$descripcion,$id_categoria));
 
     }
 
@@ -34,19 +33,24 @@ class CategoriaModel {
     //booleano para el usuario
 
     public function get($id) {
-        $query = $this->db->prepare('SELECT * FROM producto WHERE id_categoria = ?');
+        $query = $this->db->prepare('SELECT p.*, c.nombre as categoria FROM producto p JOIN categoria c ON c.id_categoria = p.id_categoria AND P.id_categoria=?');
         $query->execute(array($id));
 
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
-    public function AgregarCategoria($nombre,$descripcion,$foto){
-        $sentencia=$this->db->prepare("INSERT INTO categoria(nombre,descripcion,foto)VALUES(?,?,?)");
-        $sentencia->execute(array($nombre,$descripcion,$foto));
+    public function AgregarCategoria($nombre,$descripcion){
+        $sentencia=$this->db->prepare("INSERT INTO categoria(nombre,descripcion)VALUES(?,?)");
+        $sentencia->execute(array($nombre,$descripcion));
     }
     public function borrarcat($id){
         $sentencia=$this->db->prepare("DELETE FROM categoria where id_categoria=?");
         $sentencia->execute(array($id));
  
+    }
+    private function moveFile($imagen) {
+        $filepath = "imgagenescat/" . uniqid() . "." . strtolower(pathinfo($imagen['name'], PATHINFO_EXTENSION));  
+        move_uploaded_file($imagen['tmp_name'], $filepath);
+        return $filepath;
     }
     
 }

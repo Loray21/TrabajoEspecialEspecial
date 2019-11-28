@@ -11,9 +11,22 @@ let app = new Vue({
     data: {
         subtitle: "Comentarios",
         comentarios: [], 
+    },
+    methods: {
+        borrar2: function(id) {
+            fetch('api/producto/comentarios/Borrar'+'/'+id, {
+                method: 'DELETE',
+                })
+                .then(function(data){
+                    getComentarios();
+                  console.log(data);
+                });
+              
+        }
     }
-});
 
+    
+});
 /**
  * Obtiene la lista de tareas de la API y las renderiza con Vue.
  */
@@ -24,7 +37,6 @@ function getComentarios() {
     .then(response => response.json())
     .then(comentarios => {
         app.comentarios = comentarios; // similar a $this->smarty->assign("tasks", $tasks)
-        
     })
        
     .catch(error => console.log(error));
@@ -34,11 +46,13 @@ function getComentarios() {
  * Inserta una tarea usando la API REST.
  */
 function AgregarComentario() {
-    
+    let p=document.getElementById("producto");
+    let idproducto=p.dataset.producto;
+    console.log(idproducto);
     let data = {
         usuario:  document.querySelector("input[name=usuario]").value,
         comentario:  document.querySelector("input[name=comentario]").value,
-        id:  document.querySelector("input[name=id_producto]").value,
+        id:  idproducto,
 
     }
     console.log(data);
@@ -49,24 +63,14 @@ function AgregarComentario() {
         body: JSON.stringify(data) 
      })
      .then(response => {
+        console.log(data);
+
          getComentarios();
      })
      .catch(error => console.log(error));
 }
 
 
-async function borrar(id){ 
-    try{
-        let r = await fetch('api/producto/comentario'+"/"+id,{
-            "method": "DELETE"
-        });
-        let json = await r.json();
-        console.log(json);
-    
-        }catch(e){
-            console.log(e);
-        } 
-}
 getComentarios();
 
 // obtiene las tareas al iniciio

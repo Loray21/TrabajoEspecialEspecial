@@ -1,31 +1,39 @@
 {include 'templates/header.tpl'}
 
   <!-- Page Content -->
-  <div class="container-fluid">
-  <div class="dropdown show">
-  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Ordenar por
-  </a>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a class="dropdown-item" href="OrdenarPorPrecio">precio de menor a mayor</a>
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Categorias
+  </button>
+  <div class="dropdown-menu">
+      {foreach from=$cat item=p}
+      <a class="dropdown-item" href="Categoria/{$p->id_categoria}">{$p->nombre}</a>              
+      {if isset($userName)}
+  - <a href='borrarCat/{$p->id_categoria}'>Borrar</a></td><td> 
+  - <a href='precargarcat/{$p->id_categoria}'>editar</a></td><td> 
+  
+  {/if}
+  
+               {/foreach}
+  
+    </div>
   </div>
 </div>
+
+<!-- Split dropright button -->
+<div class="btn-group dropright">
+  <button type="button" class="btn btn-secondary">
+    Ordenar Por
+  </button>
+  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="sr-only">Toggle Dropright</span>
+  </button>
+  <div class="dropdown-menu">
+      <a class="dropdown-item" href="OrdenarPorPrecio">precio de menor a mayor</a>
+
+  </div>
+</div>
+  
   <div class="container">
-
-
-    <div class="row">
-
-      <div class="col-lg-3">
-
-        <h1 class="my-4">Supermecado Marano</h1>
-        <div class="list-group">
-          <a href="#" class="list-group-item">Category 1</a>
-          <a href="#" class="list-group-item">Category 2</a>
-          <a href="#" class="list-group-item">Category 3</a>
-        </div>
-      </div>
-      <!-- /.col-lg-3 -->
-
         <div class="row">
 {foreach from=$lista_Productos item=p}
           <div class="col-lg-4 col-md-6 mb-4">
@@ -55,6 +63,7 @@
 </div>
 
 {if isset($userName)}
+<h3>agregue un  producto</h3>
 
 <form action="agregar"  method="POST" enctype="multipart/form-data">  
 <div class="container">
@@ -68,18 +77,19 @@
         <input class="form-control" type="number"  name="precio" placeholder="precio">
         <input class="form-control" type="text"   name="descripcion" placeholder="Descripcion">
         <input class="form-control" type="file"   name="imagen" placeholder="foto">
-        <input type="submit"  value=agregar; class="btn btn-primary mr-2"Agregar>
+        <input type="submit"  value='agregar producto' class="btn btn-primary mr-2">
 
 </form>
-        {/if}
-
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
+            <h3>agregue un categoria</h3>
+            <form action="AgregarCategoria" method="POST" enctype="multipart/form-data>
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Supermecado mrh</p>
-    </div>
-    <!-- /.container -->
-  </footer>
-</body>
+        <input class="form-control" type="text"  name="nombre" placeholder="nombre">
+        <input class="form-control" type="text"   name="descripcion" placeholder="Descripcion">
+        <input type="submit"  value='Agregar  categoria' class="btn btn-primary mr-2">
+  </div>
+</form>
 
-</html>
+ {/if}
+
+            {include file="footer.tpl"}
+

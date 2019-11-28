@@ -17,16 +17,11 @@ class CategoriaController {
         $this->view = new  CategoriaView();
     }
     
-    public function GetCategoria(){
-        $Categoria = $this->model->GetCategoria();
-        $this->view->display($Categoria);
-    
-    }
     public function AgregarCategoria(){
                // barrera para usuario logueado
                $this->authHelper->checkLoggedIn();
 
-        $this->model->AgregarCategoria($_POST['nombre'],$_POST['descripcion'],$_POST['foto']);
+        $this->model->AgregarCategoria($_POST['nombre'],$_POST['descripcion']);
         header("Location: " .BASE_URL."categorias");
 
     }
@@ -37,9 +32,8 @@ class CategoriaController {
         $id_cat =$params[':ID'];
         $nombre = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
-        $foto = $_POST['foto'];
         if (!empty($nombre)) {
-            $this->model->editarcat($id_cat,$nombre,$descripcion,$foto);
+            $this->model->editarcat($id_cat,$nombre,$descripcion);
             header("Location: " . BASE_URL."categorias");
 
         } else {

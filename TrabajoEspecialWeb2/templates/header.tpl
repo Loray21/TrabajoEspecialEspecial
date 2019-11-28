@@ -4,7 +4,7 @@
 <head>
 
   <meta charset="utf-8">
-  //<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
   <base href='{$BASE_URL}' >
@@ -36,36 +36,36 @@
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categorias">categorias</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="nosotros">nosotros</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="producto">productos</a>
           </li>
-           {if isset($userName)}
-         <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link" href="logout">LOGOUT</a>
-        </div>
-                {/if}
                          {if !isset($userName)}
          <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link" href="login">iniciar sesion</a>
         </div>
                 {/if}
-        
+                   {if  (isset($isAdmin))&&($isAdmin)}
+         <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link" href="admin">administrar</a>
+                            {/if}
+
+        </div>
+        {if isset($userName)}
+        <div class="navbar-nav ml-auto">
+           <a class="nav-item nav-link" href="">{$userName}</a>
+       </div>
+                       {/if}
+   {if isset($userName)}
+    <div class="navbar-nav ml-auto">
+      <a class="nav-item nav-link" href="logout">LOGOUT</a>
+          </div>
+         {/if}
         </ul>
       </div>
     </div>
-
   </nav>
-             <a href="getComentariosCSR">Tareas CSR</a>
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
 

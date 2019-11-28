@@ -46,5 +46,11 @@ class UserModel {
         $sentencia =  $this->db->prepare("UPDATE usuarios SET  admin=0 WHERE id=?");
         $sentencia->execute(array($id));
     }
+    public function borrarusuario($id){
+        $sentencia=$this->db->prepare("DELETE FROM usuarios where id=?");
+        $sentencia->execute(array($id));
+
+
+    }
 
 }

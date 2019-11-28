@@ -18,16 +18,4 @@
                 Podés participar de todas las actividades educativas, culturales y recreativas que organiza Supermercado MaranoMHS.</p>
     </article> 
     
-
-             <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Supermecado mrh</p>
-    </div>
-    <!-- /.container -->
-  </footer>
-            
-  </div>
-    
-</body>
-</html>
+            {include file="footer.tpl"}

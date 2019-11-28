@@ -10,7 +10,10 @@
 
         <div class="form-group">
             <label>Password</label>
-            <input type="password" name="password" class="form-control" placeholder="Password">
+            <input type="password" name="password" class="form-control" placeholder="Password" id=password>
+            <div class="col">
+  <button class="btn btn-primary" type="button" id=mostrar>Mostrar Contraseña</button>
+</div>
             <a href="registrarse">no tienes cuenta? registrate</a>
 
         </div>
@@ -26,10 +29,6 @@
 
     </form>
 </div>
-          <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Supermecado mrh</p>
-    </div>
-    <!-- /.container -->
-  </footer>
+ 
+          <script src="js/mostrarContraseña.js"></script>
+            {include file="footer.tpl"}
