@@ -7,7 +7,8 @@
     <ul id=comentario  > 
        <li v-for="coment in comentarios">
         {{ coment.usuario }} - {{coment.id_comentario}} - {{coment.comentario}}- {{coment.puntaje}}-   
-        <button    @click="borrar2(coment.id_comentario);">borrar</button>
+        <button 
+           @click="borrar2(coment.id_comentario);">borrar</button>
 
 
 
