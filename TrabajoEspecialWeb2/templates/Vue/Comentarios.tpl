@@ -11,7 +11,6 @@
            @click="borrar2(coment.id_comentario);">borrar</button>
 
 
-
        </li> 
     </ul>
 
