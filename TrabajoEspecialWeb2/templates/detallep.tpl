@@ -28,8 +28,7 @@
             <form id="form-comentario" action="insertar" method="post">
                 {if  (isset($isAdmin))&&($isAdmin)}
 
-                      <input type="hidden" name=id_producto value="{$productos->id_producto}" >
-                       
+                <input type="hidden" name="id_producto" value="{$productos->id_producto}" >
                 <input type="text" name="usuario" placeholder="usuario">
                 <input type="text" name="comentario" placeholder="comentario">
                 <select name="puntaje">
@@ -40,11 +39,9 @@
                     <option value="5">5</option>
 
                   </select>
+                  <input type="submit"  value="Insertar">
 
-
-                <input type="submit" value="agregar">
             </form>
             {/if}
-
         <script src="js/comentarios.js"></script>
              {include file="templates/footer.tpl"}

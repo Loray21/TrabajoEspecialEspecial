@@ -64,7 +64,6 @@
                 $comentario = $_POST['comentario'];
                 $puntaje = $_POST['puntaje'];
                 $this->modelcomentarios->AgregarComentario($usuario,$comentario,$id_producto,$puntaje);
-                header("Location: " . BASE_URL."producto");
 
             }
             //borrar comentario

@@ -16,7 +16,15 @@ class ComentarioApiController extends ApiController{
             $usuario = $body->usuario;
             $comentario = $body->comentario;
             $producto = $this->model->AgregarProducto($id_producto,$usuario,$comentario );
-        }
+            $productonuevo = $this->model->getComent($producto);
+            if ($producto)
+            $this->view->response($producto, 200);
+        else
+            $this->view->response("Error al insertar tarea", 500);
+
+    }            
+
+
         //obtener comentarios
         public function GetComentarios($params=null){
             $comentario = $this->model->getComentarios();

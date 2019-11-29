@@ -1,7 +1,6 @@
 <?php
 
 class CategoriaModel {
-
     private $db;
     function __construct(){
         $this->db = new PDO('mysql:host=localhost;'.'dbname=supermecado;charset=utf8', 'root', '');

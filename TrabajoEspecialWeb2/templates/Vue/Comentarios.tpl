@@ -7,9 +7,16 @@
     <ul id=comentario  > 
        <li v-for="coment in comentarios">
         {{ coment.usuario }} - {{coment.id_comentario}} - {{coment.comentario}}- {{coment.puntaje}}-   
+       {/literal}
+       {if  (isset($isAdmin))&&($isAdmin)}
+
+       <div  id="resultado"></div>
+{literal}
         <button 
            @click="borrar2(coment.id_comentario);">borrar</button>
-
+{/literal}
+            {/if}
+{literal}
 
        </li> 
     </ul>
